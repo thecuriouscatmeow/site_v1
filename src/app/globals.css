@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+/*
+  Design tokens — single source of truth is src/design/tokens.ts
+  Values are mirrored here as CSS custom properties and @theme extensions.
+  When changing a color or font, update tokens.ts AND the matching line below.
+
+  NOTE (Tailwind v4): Token wiring uses @theme instead of tailwind.config.ts.
+  This gives utility classes: bg-bg, bg-surface, text-text, text-muted,
+  text-accent, border-border, font-sans, font-display.
+*/
+
+:root {
+  --color-bg:         #FAF9F6;
+  --color-text:       #111111;
+  --color-text-muted: #6B6B6B;
+  --color-accent:     #007F5F;
+  --color-surface:    #F0EFEB;
+  --color-border:     #E0DED8;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 8rem;
+}
+
+@theme {
+  /* Colors → utility classes: bg-bg, text-text, text-muted, text-accent, bg-surface, border-border */
+  --color-bg:      #FAF9F6;
+  --color-text:    #111111;
+  --color-muted:   #6B6B6B;
+  --color-accent:  #007F5F;
+  --color-surface: #F0EFEB;
+  --color-border:  #E0DED8;
+
+  /* Fonts — CSS variables injected by next/font/google in layout.tsx */
+  --font-sans:    var(--font-sans);
+  --font-display: var(--font-display);
+}
+
+/* Base styles */
+html {
+  background-color: var(--color-bg);
+}
+
+body {
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prevent heading overflow on narrow screens */
+h1, h2, h3 {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Tappable nav links (44px min touch target for mobile) */
+nav a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Scroll container */
+.scroll-container {
+  height: 100dvh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hover utilities */
+.hover-accent:hover {
+  color: var(--color-accent) !important;
+}
+
+.hover-accent-underline:hover {
+  color: var(--color-accent) !important;
+  text-decoration-color: var(--color-accent);
+}
+
+/* Scroll hint animation — used by Identity section */
+@keyframes bounce-down {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+.animate-bounce-down {
+  animation: bounce-down 1.5s ease-in-out infinite;
+}
