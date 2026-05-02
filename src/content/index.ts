@@ -7,7 +7,7 @@ export const content = {
     linkedinDisplay: 'linkedin.com/in/saahilbasak',
     github: 'https://github.com/thecuriouscatmeow',
     githubDisplay: 'github.com/thecuriouscatmeow',
-    resumeUrl: '/resume.pdf',
+    // resumeUrl is now dynamic — see src/content/blob.ts and useResumeUrl hook
   },
   sections: {
     identity: {
